@@ -16,7 +16,7 @@ The coressponding codes are deployed in *classification* and *segmentation* fold
 contains multimodal classification and segmentation tasks.
 
 # Performance on multimodal classificaition task
-Details can be seen in [Classification](./classification/READMe.md)
+Details can be seen in [Classification](https://github.com/shicaiwei123/MMANet/blob/main/classification/ReadMe.md)
 
 # Performance on multimodal classificaition task
 Coming soon

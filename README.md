@@ -6,7 +6,7 @@ Here is the official PyTorch implementation of MMANet proposed in ''*MMANet: Mar
 ## Main Dependencies
 - Ubuntu20.04
 - CUDA 11.3
-- Pytorch1.10
+- Pytorch1.12.1
 - Python 3.8
 
 ## Folder introduction
@@ -18,5 +18,5 @@ contains multimodal classification and segmentation tasks.
 # Performance on multimodal classificaition task
 Details can be seen in [Classification](https://github.com/shicaiwei123/MMANet/blob/main/classification/ReadMe.md)
 
-# Performance on multimodal classificaition task
-Coming soon
+# Performance on multimodal segmentation task
+Details can be seen in [Segmentation](https://github.com/shicaiwei123/MMANet/blob/main/segmentation/ReadMe.md)

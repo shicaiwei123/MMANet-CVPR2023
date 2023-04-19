@@ -119,31 +119,7 @@ class SURF_Baseline(nn.Module):
             # print(2)
             x_rgb, x_depth, x_ir, p = unbalance_modality_drop(x_rgb, x_depth, x_ir, self.p, self.args)
 
-        # print(p)
-        #
-        # if self.drop_mode == 'average':
-        #     img_rgb, img_ir, img_depth, p = modality_drop(img_rgb, img_ir, img_depth, self.p, self.args)
-        # else:
-        #     img_rgb, img_ir, img_depth, p = unbalance_modality_drop(img_rgb, img_ir, img_depth, self.p, self.args)
-        #
-        # print(torch.sum(img_rgb), torch.sum(img_ir), torch.sum(img_depth))
-        #
-        # if torch.sum(img_rgb) == 0:
-        #     x_rgb = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_rgb = self.special_bone_rgb(img_rgb)
-        #
-        # if torch.sum(img_ir) == 0:
-        #     x_ir = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_ir = self.special_bone_ir(img_ir)
-        #
-        # if torch.sum(img_depth) == 0:
-        #     x_depth = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_depth = self.special_bone_depth(img_depth)
-        #
-        # print(p)
+
 
         x = torch.cat((x_rgb, x_depth, x_ir), dim=1)
         layer3 = self.shared_bone[0](x)
@@ -222,31 +198,7 @@ class SURF_Baseline_Auxi(nn.Module):
         else:
             x_rgb, x_ir, x_depth, p = unbalance_modality_drop(x_rgb, x_ir, x_depth, self.p, self.args)
 
-        # print(p)
-        #
-        # if self.drop_mode == 'average':
-        #     img_rgb, img_ir, img_depth, p = modality_drop(img_rgb, img_ir, img_depth, self.p, self.args)
-        # else:
-        #     img_rgb, img_ir, img_depth, p = unbalance_modality_drop(img_rgb, img_ir, img_depth, self.p, self.args)
-        #
-        # print(torch.sum(img_rgb), torch.sum(img_ir), torch.sum(img_depth))
-        #
-        # if torch.sum(img_rgb) == 0:
-        #     x_rgb = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_rgb = self.special_bone_rgb(img_rgb)
-        #
-        # if torch.sum(img_ir) == 0:
-        #     x_ir = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_ir = self.special_bone_ir(img_ir)
-        #
-        # if torch.sum(img_depth) == 0:
-        #     x_depth = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_depth = self.special_bone_depth(img_depth)
-        #
-        # print(p)
+
 
         x = torch.cat((x_rgb, x_ir, x_depth), dim=1)
         layer3 = self.shared_bone[0](x)
@@ -333,31 +285,6 @@ class SURF_Baseline_Auxi_Weak(nn.Module):
         else:
             x_rgb, x_ir, x_depth, p = unbalance_modality_drop(x_rgb, x_ir, x_depth, self.p, self.args)
 
-        # print(p)
-        #
-        # if self.drop_mode == 'average':
-        #     img_rgb, img_ir, img_depth, p = modality_drop(img_rgb, img_ir, img_depth, self.p, self.args)
-        # else:
-        #     img_rgb, img_ir, img_depth, p = unbalance_modality_drop(img_rgb, img_ir, img_depth, self.p, self.args)
-        #
-        # print(torch.sum(img_rgb), torch.sum(img_ir), torch.sum(img_depth))
-        #
-        # if torch.sum(img_rgb) == 0:
-        #     x_rgb = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_rgb = self.special_bone_rgb(img_rgb)
-        #
-        # if torch.sum(img_ir) == 0:
-        #     x_ir = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_ir = self.special_bone_ir(img_ir)
-        #
-        # if torch.sum(img_depth) == 0:
-        #     x_depth = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_depth = self.special_bone_depth(img_depth)
-        #
-        # print(p)
 
         x = torch.cat((x_rgb, x_ir, x_depth), dim=1)
         layer3 = self.shared_bone[0](x)
@@ -422,23 +349,7 @@ class SURF_Baseline_Auxi_Weak_Layer4(nn.Module):
             model_resnet18_se_4.fc,
         )
 
-        # if args.buffer:
-        #     self.auxi_bone = nn.Sequential(
-        #         nn.Conv2d(args.inplace_new,args.inplace_new,1,1),
-        #         model_resnet18_se_4.layer3_new,
-        #         model_resnet18_se_4.layer4,
-        #         model_resnet18_se_4.avgpool,
-        #         Flatten(1),
-        #         model_resnet18_se_4.fc,
-        #     )
-        # else:
-        #     self.auxi_bone = nn.Sequential(
-        #         model_resnet18_se_4.layer3_new,
-        #         model_resnet18_se_4.layer4,
-        #         model_resnet18_se_4.avgpool,
-        #         Flatten(1),
-        #         model_resnet18_se_4.fc,
-        #     )
+
 
     def forward(self, img_rgb, img_depth, img_ir):
         x_rgb = self.special_bone_rgb(img_rgb)
@@ -450,31 +361,6 @@ class SURF_Baseline_Auxi_Weak_Layer4(nn.Module):
         else:
             x_rgb, x_depth, x_ir, p = unbalance_modality_drop(x_rgb, x_depth, x_ir, self.p, self.args)
 
-        # print(p)
-        #
-        # if self.drop_mode == 'average':
-        #     img_rgb, img_ir, img_depth, p = modality_drop(img_rgb, img_ir, img_depth, self.p, self.args)
-        # else:
-        #     img_rgb, img_ir, img_depth, p = unbalance_modality_drop(img_rgb, img_ir, img_depth, self.p, self.args)
-        #
-        # print(torch.sum(img_rgb), torch.sum(img_ir), torch.sum(img_depth))
-        #
-        # if torch.sum(img_rgb) == 0:
-        #     x_rgb = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_rgb = self.special_bone_rgb(img_rgb)
-        #
-        # if torch.sum(img_ir) == 0:
-        #     x_ir = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_ir = self.special_bone_ir(img_ir)
-        #
-        # if torch.sum(img_depth) == 0:
-        #     x_depth = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_depth = self.special_bone_depth(img_depth)
-        #
-        # print(p)
 
         x = torch.cat((x_rgb, x_depth, x_ir), dim=1)
         layer3 = self.shared_bone[0](x)
@@ -543,23 +429,7 @@ class SURF_MMANet(nn.Module):
             model_resnet18_se_4.fc,
         )
 
-        # if args.buffer:
-        #     self.auxi_bone = nn.Sequential(
-        #         nn.Conv2d(args.inplace_new,args.inplace_new,1,1),
-        #         model_resnet18_se_4.layer3_new,
-        #         model_resnet18_se_4.layer4,
-        #         model_resnet18_se_4.avgpool,
-        #         Flatten(1),
-        #         model_resnet18_se_4.fc,
-        #     )
-        # else:
-        #     self.auxi_bone = nn.Sequential(
-        #         model_resnet18_se_4.layer3_new,
-        #         model_resnet18_se_4.layer4,
-        #         model_resnet18_se_4.avgpool,
-        #         Flatten(1),
-        #         model_resnet18_se_4.fc,
-        #     )
+
 
     def forward(self, img_rgb, img_depth, img_ir):
         x_rgb = self.special_bone_rgb(img_rgb)
@@ -571,31 +441,7 @@ class SURF_MMANet(nn.Module):
         else:
             x_rgb, x_depth, x_ir, p = unbalance_modality_drop(x_rgb, x_depth, x_ir, self.p, self.args)
 
-        # print(p)
-        #
-        # if self.drop_mode == 'average':
-        #     img_rgb, img_ir, img_depth, p = modality_drop(img_rgb, img_ir, img_depth, self.p, self.args)
-        # else:
-        #     img_rgb, img_ir, img_depth, p = unbalance_modality_drop(img_rgb, img_ir, img_depth, self.p, self.args)
-        #
-        # print(torch.sum(img_rgb), torch.sum(img_ir), torch.sum(img_depth))
-        #
-        # if torch.sum(img_rgb) == 0:
-        #     x_rgb = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_rgb = self.special_bone_rgb(img_rgb)
-        #
-        # if torch.sum(img_ir) == 0:
-        #     x_ir = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_ir = self.special_bone_ir(img_ir)
-        #
-        # if torch.sum(img_depth) == 0:
-        #     x_depth = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_depth = self.special_bone_depth(img_depth)
-        #
-        # print(p)
+
 
         x = torch.cat((x_rgb, x_depth, x_ir), dim=1)
         layer3 = self.shared_bone[0](x)
@@ -667,25 +513,7 @@ class SURF_MV(nn.Module):
 
         x = [x_rgb, x_ir, x_depth]
 
-        # if self.drop_mode == 'average':
-        #     img_rgb, img_ir, img_depth, p = modality_drop(img_rgb, img_ir, img_depth, self.p, self.args)
-        # else:
-        #     img_rgb, img_ir, img_depth, p = unbalance_modality_drop(img_rgb, img_ir, img_depth, self.p, self.args)
-        #
-        # if torch.sum(img_rgb) == 0:
-        #     x_rgb = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_rgb = self.special_bone_rgb(img_rgb)
-        #
-        # if torch.sum(img_ir) == 0:
-        #     x_ir = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_ir = self.special_bone_ir(img_ir)
-        #
-        # if torch.sum(img_depth) == 0:
-        #     x_depth = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_depth = self.special_bone_depth(img_depth)
+
 
         x_mean = (x_rgb + x_ir + x_depth) / torch.sum(p, dim=[1])
 
@@ -789,25 +617,6 @@ class SURF_MV_Auxi_Weak(nn.Module):
 
         x = [x_rgb, x_ir, x_depth]
 
-        # if self.drop_mode == 'average':
-        #     img_rgb, img_ir, img_depth, p = modality_drop(img_rgb, img_ir, img_depth, self.p, self.args)
-        # else:
-        #     img_rgb, img_ir, img_depth, p = unbalance_modality_drop(img_rgb, img_ir, img_depth, self.p, self.args)
-        #
-        # if torch.sum(img_rgb) == 0:
-        #     x_rgb = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_rgb = self.special_bone_rgb(img_rgb)
-        #
-        # if torch.sum(img_ir) == 0:
-        #     x_ir = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_ir = self.special_bone_ir(img_ir)
-        #
-        # if torch.sum(img_depth) == 0:
-        #     x_depth = torch.zeros((img_rgb.shape[0], 128, 14, 14)).cuda()
-        # else:
-        #     x_depth = self.special_bone_depth(img_depth)
 
         x_mean = (x_rgb + x_ir + x_depth) / torch.sum(p, dim=[1])
 

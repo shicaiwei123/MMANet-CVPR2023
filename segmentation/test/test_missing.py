@@ -102,19 +102,15 @@ def train_main(args):
 
         print("../results/nyuv2/mad_mar/nyuv2/checkpoints_19_04_2023-09_32_25-228802/ckpt_epoch_"+str(args.i)+".pth",)
 
-    elif args.dataset == 'sunrgbd':
-        checkpoint = torch.load(
-            "../results/sunrgbd/rgbd_r50_missing_kd_amp/sunrgbd/checkpoints_21_09_2022-11_21_28-899506/ckpt_epoch_260.pth",
-            map_location=lambda storage, loc: storage)
     else:
         # checkpoint = torch.load(
         #     "../results/missing_kd_auxi_amp/cityscapes-with-depth/checkpoints_15_10_2022-16_18_20-210412/ckpt_epoch_289.pth",
         #     map_location=lambda storage, loc: storage)
         checkpoint = torch.load(
-            "/home/ssd/mmanet/cityscape/mad_mar/cityscapes-with-depth/checkpoints_05_04_2023-10_02_35-036121/ckpt_epoch_"+str(args.i)+".pth",
+            "../results/cityscape/full/cityscapes-with-depth/checkpoints_19_04_2023-22_41_19-708754/ckpt_epoch_"+str(args.i)+".pth",
             map_location=lambda storage, loc: storage)
 
-        print("/home/ssd/mmanet/cityscape/mad_mar/cityscapes-with-depth/checkpoints_05_04_2023-10_02_35-036121/ckpt_epoch_"+str(args.i)+".pth")
+        print("../results/cityscape/full/cityscapes-with-depth/checkpoints_19_04_2023-22_41_19-708754/ckpt_epoch_"+str(args.i)+".pth")
     model.load_state_dict(checkpoint['rgb_state_dict'], strict=False)
 
     if args.freeze > 0:
@@ -249,7 +245,7 @@ def train_main(args):
                     epoch, loss_function_valid_unweighted,
                     add_log_key='_full-res', debug_mode=args.debug
                 )
-                print(miou_full_res['all'])
+                # print(miou_full_res['all'])
 
             # save weights
             # print(miou['all'])
@@ -448,11 +444,12 @@ if __name__ == '__main__':
     args = parse_args()
 
     for i in range(10):
-        i=290+i
+        i=298
 
         for p in [[0,1],[1,0],[1, 1]]:
             args.p = p
             args.i=i
+            train_main(args)
             try:
                 train_main(args)
             except Exception as e:

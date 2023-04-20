@@ -78,3 +78,13 @@
 ```
 
 
+## Inference
+modify the path to pretrained model in 'test/test_missing.py' (Line 99 for NYUV2 and Line 109 for Cityscape)
+
+```bash
+  cd test
+  bash test_nyuv2.sh
+  bash test_cityscape.sh
+  
+```
+

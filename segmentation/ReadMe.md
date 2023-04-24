@@ -61,6 +61,24 @@
 
 [//]: # (```)
 
+## Inference
+
+### Download pretrain model
+- NYUV2: [baiduyun](https://pan.baidu.com/s/1UY-fzsrGxTR4-lJ6zAlyFA) itas
+  - full folder contains the baseline model trained with complete multimodal data
+  - mad_mar folder contains the models trained with mad and mar strategies
+- Cityscape
+  - coming soon
+
+- modify the path to pretrained model in 'test/test_missing.py' (Line 99 for NYUV2 and Line 109 for Cityscape)
+- run code 
+    ```bash
+      cd test
+      bash test_nyuv2.sh
+      bash test_cityscape.sh
+      
+    ```
+
 
 ## Training From Scratch
 
@@ -78,13 +96,5 @@
 ```
 
 
-## Inference
-modify the path to pretrained model in 'test/test_missing.py' (Line 99 for NYUV2 and Line 109 for Cityscape)
 
-```bash
-  cd test
-  bash test_nyuv2.sh
-  bash test_cityscape.sh
-  
-```
 

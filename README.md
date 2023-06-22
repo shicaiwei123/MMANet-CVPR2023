@@ -1,5 +1,8 @@
 # Official MMANet in PyTorch
-Here is the official PyTorch implementation of MMANet proposed in ''*MMANet: Margin-aware Distillation and Modality-aware Regularization for Incomplete Multimodal Learning*''. It's a general framework to address the issue of incomple multimodal inference. Details can be seen in our CVPR 2023 paper.
+Here is the official PyTorch implementation of MMANet proposed in ''*[MMANet: Margin-aware Distillation and Modality-aware Regularization for Incomplete Multimodal Learning](http://openaccess.thecvf.com/content/CVPR2023/html/Wei_MMANet_Margin-Aware_Distillation_and_Modality-Aware_Regularization_for_Incomplete_Multimodal_Learning_CVPR_2023_paper.html)*''. 
+
+It's a general framework to address the issue of multimodal learning with incomplete data. Details can be seen in our CVPR 2023 paper.
+
 
 # Basic information of implementation
 

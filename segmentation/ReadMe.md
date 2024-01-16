@@ -68,7 +68,7 @@
   - full folder contains the baseline model trained with complete multimodal data
   - mad_mar folder contains the models trained with mad and mar strategies
 - Cityscape
-  - coming soon
+  - [baiduyun](https://pan.baidu.com/s/1DAlAuUlK9ROegmFlk3B2cw?pwd=0n3p) 0n3p
 
 - modify the path to pretrained model in 'test/test_missing.py' (Line 99 for NYUV2 and Line 109 for Cityscape)
 - run code 

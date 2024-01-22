@@ -11,6 +11,8 @@ It's a general framework to address the issue of multimodal learning with incomp
 - CUDA 11.3
 - Pytorch1.12.1
 - Python 3.8
+- requirements
+  - pip install -r requirements.txt
 
 ## Folder introduction
 Our paper perform experiments on two classic multimodal tasks, e.g classification and segmentation.

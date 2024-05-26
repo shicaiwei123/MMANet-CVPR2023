@@ -15,6 +15,7 @@ All the files used for multimodal classificaition task are contained in the clas
 - Create soft link to data folder
     - ln -s data_path path_to_MMANet/data/dataset_name
     - e.g., ln -s /home/ssd/CASIA-SURF /home/bbb/shicaiwei/MMANet/data/CASIA-SURF
+- precessed data for [casia-surf](https://pan.baidu.com/s/1h_vVQof0cdkLd396sVi1Rg?pwd=ao07)
 
 
 
